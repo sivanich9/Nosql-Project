@@ -83,6 +83,9 @@ class XMLParser:
                     elif child.tag == "variable":
                         self.processes[-1]["variable"] = child.text
 
+                    elif child.tag == "variable1":
+                        self.processes[-1]["variable1"] = child.text
+
                     elif child.tag == "task":
                         self.processes[-1]["task"] = child.text
 
@@ -133,6 +136,10 @@ class XMLParser:
 
             elif process["task"] == "order":
                 scriptline = "{} =  ORDER {} BY {};\n".format(process["name"], process["table"], process["column"])
+                self.pigFile.write(scriptline)
+
+            elif process["task"] == "count":
+                scriptline = "{} =  FOREACH {} GENERATE {} AS {},COUNT({}) AS {};\n".format(process["name"], process["table"], process["column"], process["variable"], process["column1"], process["variable1"])
                 self.pigFile.write(scriptline)
 
 

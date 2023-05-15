@@ -64,14 +64,26 @@
         <column>subject</column>
     </process>
 
+    <process>
+        <name>count_records</name>
+        <task>count</task>
+        <table>grouped_records</table>
+        <column>group</column>
+        <variable>predicate</variable>
+        <column1>records</column1>
+        <variable1>PredictCount</variable1>
+    </process>
+
+
+
 
 
 
     <!-- <dumpvar>filtered_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
-    <!-- <dumpvar>grouped_records</dumpvar>
-    <outputfile>./yagowordcounts</outputfile> -->
+    <dumpvar>grouped_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile>
 
     <!-- <dumpvar>distinct_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
@@ -85,8 +97,10 @@
     <!-- <dumpvar>limit_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
-    <dumpvar>order_records</dumpvar>
-    <outputfile>./yagowordcounts</outputfile>
+    <!-- <dumpvar>order_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
 
+    <!-- <dumpvar>count_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
 
 </processes>
