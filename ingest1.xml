@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<processes>
+
+    <inputfile>./student_dataset.txt</inputfile>
+    <columns>
+        <col>id</col>
+        <type>chararray</type>
+        <col>firstname</col>
+        <type>chararray</type>
+        <col>lastname</col>
+        <type>chararray</type>
+        <col>marks</col>
+        <type>int</type>
+        <col>phone_num</col>
+        <type>chararray</type>
+        <col>city</col>
+        <type>chararray</type>
+    </columns>
+    <delimiter>space</delimiter>
+
+    <process>
+        <name>filtered_records</name>
+        <task>filter</task>
+        <column>city</column>
+        <condition>==</condition>
+        <clause>&lt;Chennai&gt;</clause>
+    </process>
+
+    <process>
+        <name>grouped_records</name>
+        <task>group</task>
+        <column>city</column>
+    </process>
+
+    <process>
+        <name>distinct_records</name>
+        <task>distinct</task>
+        <table>records</table>
+    </process>
+
+    <process>
+        <name>cross_records</name>
+        <task>cross</task>
+        <table>records</table>
+        <table1>filtered_records</table1>
+    </process>
+
+    <process>
+        <name>join_records</name>
+        <task>join</task>
+        <table>records</table>
+        <column>city</column>
+        <table1>filtered_records</table1>
+        <column1>city</column1>
+    </process>
+
+    <process>
+        <name>limit_records</name>
+        <task>limit</task>
+        <table>records</table>
+        <clause>6</clause>
+    </process>
+
+    <process>
+        <name>order_records</name>
+        <task>order</task>
+        <table>records</table>
+        <column>firstname</column>
+    </process>
+
+    <process>
+        <name>foreach_records</name>
+        <task>foreach</task>
+        <table>grouped_records</table>
+        <column>group</column>
+        <variable>city</variable>
+        <column1>records</column1>
+        <variable1>studentCount</variable1>
+    </process>
+
+
+
+
+    <!-- <dumpvar>filtered_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>grouped_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>distinct_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>cross_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>join_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>limit_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>order_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <dumpvar>foreach_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile>
+
+</processes>

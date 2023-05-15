@@ -25,7 +25,7 @@
     <process>
         <name>grouped_records</name>
         <task>group</task>
-        <column>predicate</column>variable
+        <column>predicate</column>
     </process>
 
     <process>
