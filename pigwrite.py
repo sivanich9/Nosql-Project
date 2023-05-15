@@ -131,6 +131,15 @@ class XMLParser:
                 scriptline = "{} = JOIN {} BY {},{} BY {};\n".format(process["name"], process["table"], process["column"], process["table1"], process["column1"])
                 self.pigFile.write(scriptline)
 
+            elif process["task"] == "limit":
+                scriptline = "{} =  LIMIT {} {};\n".format(process["name"], process["table"], process["clause"])
+                self.pigFile.write(scriptline)
+
+            elif process["task"] == "order":
+                scriptline = "{} =  ORDER {} BY {};\n".format(process["name"], process["table"], process["column"])
+                self.pigFile.write(scriptline)
+
+    
 
         storeLine = "STORE {} INTO '{}';".format(self.dumpVariable, self.outputFile)
         self.pigFile.write(storeLine)

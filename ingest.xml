@@ -57,37 +57,19 @@
         <column1>predicate</column1>
     </process>
 
-    <!--<process>
+    <process>
         <name>limit_records</name>
         <task>limit</task>
-        <variable>records_A</variable>
+        <table>records</table>
         <clause>5</clause>
     </process>
 
     <process>
         <name>order_records</name>
         <task>order</task>
-        <variable>records_A</variable>
-        <clause>key</clause>
+        <table>records</table>
+        <column>subject</column>
     </process>
-
-    <process>
-        <name>describe_records</name>
-        <task>describe</task>
-        <variable>records_A</variable>
-    </process>
-
-    <process>
-        <name>explain_records</name>
-        <task>explain</task>
-        <variable>records_A</variable>
-    </process>
-
-    <process>
-        <name>illustrate_records</name>
-        <task>illustrate</task>
-        <variable>records_A</variable>
-    </process> -->
 
 
 
@@ -107,7 +89,14 @@
     <!-- <dumpvar>cross_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
-    <dumpvar>join_records</dumpvar>
+    <!-- <dumpvar>join_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>limit_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <dumpvar>order_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile>
+
 
 </processes>
