@@ -138,7 +138,7 @@ class XMLParser:
                 scriptline = "{} =  ORDER {} BY {};\n".format(process["name"], process["table"], process["column"])
                 self.pigFile.write(scriptline)
 
-            elif process["task"] == "count":
+            elif process["task"] == "foreach":
                 scriptline = "{} =  FOREACH {} GENERATE {} AS {},COUNT({}) AS {};\n".format(process["name"], process["table"], process["column"], process["variable"], process["column1"], process["variable1"])
                 self.pigFile.write(scriptline)
 

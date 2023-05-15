@@ -65,8 +65,8 @@
     </process>
 
     <process>
-        <name>count_records</name>
-        <task>count</task>
+        <name>foreach_records</name>
+        <task>foreach</task>
         <table>grouped_records</table>
         <column>group</column>
         <variable>predicate</variable>
@@ -77,13 +77,11 @@
 
 
 
-
-
     <!-- <dumpvar>filtered_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
-    <dumpvar>grouped_records</dumpvar>
-    <outputfile>./yagowordcounts</outputfile>
+    <!-- <dumpvar>grouped_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
 
     <!-- <dumpvar>distinct_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
@@ -100,7 +98,7 @@
     <!-- <dumpvar>order_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
-    <!-- <dumpvar>count_records</dumpvar>
-    <outputfile>./yagowordcounts</outputfile> -->
+    <dumpvar>foreach_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile>
 
 </processes>
