@@ -34,13 +34,6 @@
         <table>records</table>
     </process>
 
-    <!-- <process>
-        <name>union_records</name>
-        <task>union</task>
-        <table>records</table>
-        <table1>filtered_records</table1>
-    </process> -->
-
     <process>
         <name>cross_records</name>
         <task>cross</task>
@@ -81,9 +74,6 @@
     <outputfile>./yagowordcounts</outputfile> -->
 
     <!-- <dumpvar>distinct_records</dumpvar>
-    <outputfile>./yagowordcounts</outputfile> -->
-
-    <!-- <dumpvar>union_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
     <!-- <dumpvar>cross_records</dumpvar>

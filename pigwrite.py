@@ -119,10 +119,6 @@ class XMLParser:
                 scriptline = "{} = DISTINCT {};\n".format(process["name"], process["table"])
                 self.pigFile.write(scriptline)
 
-            elif process["task"] == "union":
-                scriptline = "{} = UNION {},{};\n".format(process["name"], process["table"], process["table1"])
-                self.pigFile.write(scriptline)
-
             elif process["task"] == "cross":
                 scriptline = "{} = CROSS {},{};\n".format(process["name"], process["table"], process["table1"])
                 self.pigFile.write(scriptline)
@@ -139,7 +135,7 @@ class XMLParser:
                 scriptline = "{} =  ORDER {} BY {};\n".format(process["name"], process["table"], process["column"])
                 self.pigFile.write(scriptline)
 
-    
+
 
         storeLine = "STORE {} INTO '{}';".format(self.dumpVariable, self.outputFile)
         self.pigFile.write(storeLine)
