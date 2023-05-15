@@ -34,29 +34,30 @@
         <table>records</table>
     </process>
 
-    <!--<process>
+    <!-- <process>
         <name>union_records</name>
         <task>union</task>
-        <variable>records_A</variable>
-        <variable>records_B</variable>
-    </process>
+        <table>records</table>
+        <table1>filtered_records</table1>
+    </process> -->
 
     <process>
         <name>cross_records</name>
         <task>cross</task>
-        <variable>records_A</variable>
-        <variable>records_B</variable>
+        <table>records</table>
+        <table1>filtered_records</table1>
     </process>
 
     <process>
         <name>join_records</name>
         <task>join</task>
-        <variable>records_A</variable>
-        <variable>records_B</variable>
-        <clause>key</clause>
+        <table>records</table>
+        <column>predicate</column>
+        <table1>filtered_records</table1>
+        <column1>predicate</column1>
     </process>
 
-    <process>
+    <!--<process>
         <name>limit_records</name>
         <task>limit</task>
         <variable>records_A</variable>
@@ -88,13 +89,25 @@
         <variable>records_A</variable>
     </process> -->
 
+
+
+
     <!-- <dumpvar>filtered_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
     <!-- <dumpvar>grouped_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile> -->
 
-    <dumpvar>distinct_records</dumpvar>
+    <!-- <dumpvar>distinct_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>union_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>cross_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <dumpvar>join_records</dumpvar>
     <outputfile>./yagowordcounts</outputfile>
 
 </processes>

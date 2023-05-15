@@ -71,16 +71,20 @@ class XMLParser:
                     elif child.tag == "table":
                         self.processes[-1]["table"] = child.text
 
+                    elif child.tag == "table1":
+                        self.processes[-1]["table1"] = child.text
+
                     elif child.tag == "column":
                         self.processes[-1]["column"] = child.text
+
+                    elif child.tag == "column1":
+                        self.processes[-1]["column1"] = child.text
 
                     elif child.tag == "variable":
                         self.processes[-1]["variable"] = child.text
 
-
                     elif child.tag == "task":
                         self.processes[-1]["task"] = child.text
-
 
                     elif child.tag == "condition":
                         self.processes[-1]["condition"] = child.text
@@ -113,6 +117,18 @@ class XMLParser:
 
             elif process["task"] == "distinct":
                 scriptline = "{} = DISTINCT {};\n".format(process["name"], process["table"])
+                self.pigFile.write(scriptline)
+
+            elif process["task"] == "union":
+                scriptline = "{} = UNION {},{};\n".format(process["name"], process["table"], process["table1"])
+                self.pigFile.write(scriptline)
+
+            elif process["task"] == "cross":
+                scriptline = "{} = CROSS {},{};\n".format(process["name"], process["table"], process["table1"])
+                self.pigFile.write(scriptline)
+
+            elif process["task"] == "join":
+                scriptline = "{} = JOIN {} BY {},{} BY {};\n".format(process["name"], process["table"], process["column"], process["table1"], process["column1"])
                 self.pigFile.write(scriptline)
 
 
