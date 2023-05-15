@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<processes>
+
+    <inputfile>./yago_test.tsv</inputfile>
+    <columns>
+        <col>subject</col>
+        <type>chararray</type>
+        <col>predicate</col>
+        <type>chararray</type>
+        <col>object</col>
+        <type>chararray</type>
+    </columns>
+    <delimiter>space</delimiter>
+
+    <process>
+        <name>filtered_records</name>
+        <task>filter</task>
+        <column>predicate</column>
+        <condition>==</condition>
+        <clause>&lt;isHeadOf&gt;</clause>
+    </process>
+
+    <process>
+        <name>grouped_records</name>
+        <task>group</task>
+        <column>predicate</column>variable
+    </process>
+
+    <process>
+        <name>distinct_records</name>
+        <task>distinct</task>
+        <table>records</table>
+    </process>
+
+    <!--<process>
+        <name>union_records</name>
+        <task>union</task>
+        <variable>records_A</variable>
+        <variable>records_B</variable>
+    </process>
+
+    <process>
+        <name>cross_records</name>
+        <task>cross</task>
+        <variable>records_A</variable>
+        <variable>records_B</variable>
+    </process>
+
+    <process>
+        <name>join_records</name>
+        <task>join</task>
+        <variable>records_A</variable>
+        <variable>records_B</variable>
+        <clause>key</clause>
+    </process>
+
+    <process>
+        <name>limit_records</name>
+        <task>limit</task>
+        <variable>records_A</variable>
+        <clause>5</clause>
+    </process>
+
+    <process>
+        <name>order_records</name>
+        <task>order</task>
+        <variable>records_A</variable>
+        <clause>key</clause>
+    </process>
+
+    <process>
+        <name>describe_records</name>
+        <task>describe</task>
+        <variable>records_A</variable>
+    </process>
+
+    <process>
+        <name>explain_records</name>
+        <task>explain</task>
+        <variable>records_A</variable>
+    </process>
+
+    <process>
+        <name>illustrate_records</name>
+        <task>illustrate</task>
+        <variable>records_A</variable>
+    </process> -->
+
+    <!-- <dumpvar>filtered_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <!-- <dumpvar>grouped_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile> -->
+
+    <dumpvar>distinct_records</dumpvar>
+    <outputfile>./yagowordcounts</outputfile>
+
+</processes>
