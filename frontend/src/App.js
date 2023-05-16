@@ -23,6 +23,8 @@ function App() {
 	const [xmlfile, setXmlFile] = useState("");
 	const [datafile, setDataFile] = useState("");
     const [formError, setFormError] = useState(null);
+    const [pigOutput, setPigOutput] = useState(null);
+    const [pigUrl, setPigUrl] = useState(null);
 
 	// function to upload corresponding files
 	async function uploadXMLFile(e) {
@@ -86,6 +88,8 @@ function App() {
 			.then((response) => response.json())
 			.then((response) => {
 				console.log(response);
+                setPigOutput(response["ingestion"])
+                setPigUrl(response["piglink"])
 			})
 			.catch((err) => {
                 console.error(err);                
@@ -98,7 +102,7 @@ function App() {
 		<div className="App">
 			<header className="App-header">
 				<form onSubmit={handleSubmit}>
-					<label htmlFor="xmlfile">Choose XML ingestion</label>
+					<label htmlFor="xmlfile">Choose XML ingestion: </label>
 					<input
 						type="file"
 						id="xmlfile"
@@ -106,10 +110,13 @@ function App() {
 						onChange={(e) => uploadXMLFile(e)}
 					/>
 
+                    <br></br>
+                    <br></br>
+
 					<span className="spanbreak"></span>
 
 					<label htmlFor="datafile">
-						Choose datafile for ingestion
+						Choose datafile for ingestion: 
 					</label>
 					<input
 						type="file"
@@ -119,12 +126,25 @@ function App() {
 					></input>
 
 					<span className="spanbreak"></span>
+                    <br></br>
+                    <br></br>
 
-                    {xmlfile && <p>{xmlfile}</p>}
-                    {datafile && <p>{datafile}</p>}
+                    {xmlfile && <p>Uploaded XML File as {xmlfile}</p>}
+                    {datafile && <p>Uploaded Data File as {datafile}</p>}
 
-					<button>Submit</button>
+					<button className="submit-btn">Submit</button>
                     {formError && <p>{formError}</p>}
+
+                    {pigOutput && pigUrl &&
+                        <div>
+                            <h3>Pig Output:</h3>
+                            <p>{pigOutput}</p>
+                            
+
+                            <h4>Link to the generated pig file:</h4>
+                            <p>{pigUrl}</p>
+                        </div>
+                    }
 				</form>
 			</header>
 		</div>
